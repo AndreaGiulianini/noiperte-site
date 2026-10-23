@@ -249,9 +249,6 @@ blockquote {
 .center {
   text-align: center;
 }
-.mt-2 { margin-top: 1rem; }
-.mt-3 { margin-top: 1.75rem; }
-.mt-4 { margin-top: 2.5rem; }
 
 /* --------------------------------------------------------- Typography ---- */
 .eyebrow {
@@ -2089,6 +2086,16 @@ a.contact-item:hover {
 .footer-bottom .cf {
   font-variant-numeric: tabular-nums;
 }
+.footer-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+.footer-credit .heart {
+  color: var(--red);
+  font-size: 1.05em;
+  line-height: 1;
+}
 
 /* --------------------------------------------------------- Page hero ----- */
 .page-hero {
@@ -2384,6 +2391,12 @@ a.contact-item:hover {
     border-bottom: 0;
   }
 }
+
+/* --------------------------------------------------------- Utilities ------- */
+/* In fondo al foglio: devono vincere sui `margin: 0` dei componenti. */
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.75rem; }
+.mt-4 { margin-top: 2.5rem; }
 
 /* --------------------------------------------------------- Motion / print */
 @media (prefers-reduced-motion: reduce) {

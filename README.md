@@ -1,7 +1,7 @@
 # Associazione Noi per Te ODV
 
 Sito web dell'Associazione Noi per Te ODV di Pievesestina di Cesena: trasporto e
-accompagnamento gratuito per anziani e disabili.
+accompagnamento per anziani e disabili.
 
 Raccoglie le pagine dell'associazione, i servizi, il volontariato, la galleria,
 le notizie, il 5x1000 e i contatti.
