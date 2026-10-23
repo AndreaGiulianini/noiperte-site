@@ -13,6 +13,10 @@ Per aggiungere un post:
      "video": true per reel e video;
   3. esegui:  python3 tools/build-social.py
 
+I nuovi post arrivano anche da soli con tools/import-social.py (vedi lì).
+Per togliere un post dal sito senza che venga reimportato, aggiungi
+"nascosto": true alla sua voce invece di cancellarla.
+
 Con --check non scrive nulla ed esce con codice 1 se le pagine non sono
 allineate a social.json (lo usa la CI).
 """
@@ -72,8 +76,9 @@ def load_posts():
                 errors.append(f"{where}: manca assets/img/{post.get('immagine')}.{ext}")
     if errors:
         sys.exit("\n".join(errors))
+    visible = [post for post in posts if not post.get("nascosto")]
     # Dal più recente; a parità di data resta l'ordine del file.
-    return sorted(posts, key=lambda p: p["data"], reverse=True)
+    return sorted(visible, key=lambda p: p["data"], reverse=True)
 
 
 def render_card(post):

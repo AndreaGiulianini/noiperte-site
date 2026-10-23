@@ -1,0 +1,63 @@
+name: Aggiorna post social
+
+# Ogni mattina legge i feed esterni (secret SOCIAL_FEEDS), importa i post nuovi
+# di Facebook e Instagram e, se ce ne sono, pubblica le card aggiornate.
+on:
+  schedule:
+    - cron: "20 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: social
+  cancel-in-progress: false
+
+jobs:
+  importa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Installa Pillow
+        run: pip install pillow==11.3.0
+
+      - name: Importa i post nuovi
+        env:
+          SOCIAL_FEEDS: ${{ secrets.SOCIAL_FEEDS }}
+        run: |
+          if [ -z "$SOCIAL_FEEDS" ]; then
+            echo "::notice::Secret SOCIAL_FEEDS non impostato: nessun post da importare."
+            exit 0
+          fi
+          python3 tools/import-social.py
+
+      - name: Controlla il sito
+        run: |
+          python3 tools/build-social.py --check
+          python3 tools/check-site.py
+          npx --yes html-validate@9 $(git ls-files '*.html')
+
+      - name: Pubblica le card aggiornate
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nessun post nuovo da pubblicare."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A tools/social.json assets/img index.html notizie/index.html
+          git commit -m "Aggiorna i post social"
+          git push
