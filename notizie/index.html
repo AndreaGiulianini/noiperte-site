@@ -193,9 +193,9 @@
     </nav>
 
     <div class="header-actions">
-      <a class="header-phone" href="tel:+393453244032">
+      <a class="header-phone" href="tel:+393453244032" aria-label="Chiama il 345 3244032">
         <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
-        345 3244032
+        <span class="header-phone__num">345 3244032</span>
       </a>
       <a class="btn btn--primary btn--sm btn--header-cta" href="/sostienici/">Sostienici</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-nav-toggle>
@@ -207,7 +207,7 @@
   </div>
 </header>
 
-<div class="mobile-nav" id="mobile-nav" tabindex="-1" role="dialog" aria-modal="true" aria-label="Menu di navigazione" data-drawer hidden>
+<div class="mobile-nav" id="mobile-nav" tabindex="-1" data-drawer hidden>
   <nav aria-label="Navigazione mobile">
     <ul>
       <li><a class="mobile-link" href="/chi-siamo/">Chi siamo <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></a></li>
@@ -261,7 +261,10 @@
     <div class="news-grid">
       <a class="news-card reveal" data-delay="0" href="/notizie/15-anni-di-servizio/">
   <div class="news-card__media">
-    <img src="/assets/img/gruppo-volontari-720.jpg" alt="I volontari dell&#x27;associazione riuniti accanto ai mezzi" width="720" height="720" loading="lazy" decoding="async">
+    <picture>
+      <source type="image/webp" srcset="/assets/img/gruppo-volontari-720.webp">
+      <img src="/assets/img/gruppo-volontari-720.jpg" alt="I volontari dell&#x27;associazione riuniti accanto ai mezzi" width="720" height="720" loading="lazy" decoding="async">
+    </picture>
   </div>
   <div class="news-card__body">
     <div class="news-card__meta"><span class="tag">Traguardi</span><time datetime="2025-05-23">23 maggio 2025</time></div>
@@ -272,7 +275,10 @@
 </a>
       <a class="news-card reveal" data-delay="1" href="/notizie/nuovi-mezzi-per-il-trasporto/">
   <div class="news-card__media">
-    <img src="/assets/img/fiat-doblo-anteriore-720.jpg" alt="Il fronte di un Fiat Doblò bianco con il logo Noi per Te sul cofano" width="720" height="720" loading="lazy" decoding="async">
+    <picture>
+      <source type="image/webp" srcset="/assets/img/fiat-doblo-anteriore-720.webp">
+      <img src="/assets/img/fiat-doblo-anteriore-720.jpg" alt="Il fronte di un Fiat Doblò bianco con il logo Noi per Te sul cofano" width="720" height="720" loading="lazy" decoding="async">
+    </picture>
   </div>
   <div class="news-card__body">
     <div class="news-card__meta"><span class="tag">Mezzi</span><time datetime="2023-12-09">9 dicembre 2023</time></div>
@@ -283,7 +289,10 @@
 </a>
       <a class="news-card reveal" data-delay="2" href="/notizie/premio-marco-biagi-2016/">
   <div class="news-card__media">
-    <img src="/assets/img/premio-marco-biagi-2016-720.jpg" alt="Attestato del Premio Marco Biagi 2016 per la Solidarietà Sociale" width="720" height="720" loading="lazy" decoding="async">
+    <picture>
+      <source type="image/webp" srcset="/assets/img/premio-marco-biagi-2016-720.webp">
+      <img src="/assets/img/premio-marco-biagi-2016-720.jpg" alt="Attestato del Premio Marco Biagi 2016 per la Solidarietà Sociale" width="720" height="720" loading="lazy" decoding="async">
+    </picture>
   </div>
   <div class="news-card__body">
     <div class="news-card__meta"><span class="tag">Riconoscimenti</span><time datetime="2016-03-12">12 marzo 2016</time></div>

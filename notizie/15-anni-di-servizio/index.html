@@ -195,9 +195,9 @@
     </nav>
 
     <div class="header-actions">
-      <a class="header-phone" href="tel:+393453244032">
+      <a class="header-phone" href="tel:+393453244032" aria-label="Chiama il 345 3244032">
         <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
-        345 3244032
+        <span class="header-phone__num">345 3244032</span>
       </a>
       <a class="btn btn--primary btn--sm btn--header-cta" href="/sostienici/">Sostienici</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-nav-toggle>
@@ -209,7 +209,7 @@
   </div>
 </header>
 
-<div class="mobile-nav" id="mobile-nav" tabindex="-1" role="dialog" aria-modal="true" aria-label="Menu di navigazione" data-drawer hidden>
+<div class="mobile-nav" id="mobile-nav" tabindex="-1" data-drawer hidden>
   <nav aria-label="Navigazione mobile">
     <ul>
       <li><a class="mobile-link" href="/chi-siamo/">Chi siamo <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></a></li>
@@ -271,7 +271,10 @@
         <p>Magliette rosse e mezzi tirati a lucido: sette automezzi più uno, quello benedetto per l'occasione, davanti alla Cattedrale. Una festa semplice, come semplice è il gesto che ripetiamo ogni mattina: accendere il motore e andare a prendere qualcuno.</p>
 
         <figure>
-          <img src="/assets/img/gruppo-volontari-901.jpg" alt="I volontari dell'associazione Noi per Te riuniti accanto ai pulmini attrezzati" width="901" height="901" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/webp" srcset="/assets/img/gruppo-volontari-901.webp">
+            <img src="/assets/img/gruppo-volontari-901.jpg" alt="I volontari dell'associazione Noi per Te riuniti accanto ai pulmini attrezzati" width="901" height="901" loading="lazy" decoding="async">
+          </picture>
           <figcaption>I volontari dell'associazione accanto ai mezzi, durante una giornata insieme.</figcaption>
         </figure>
 

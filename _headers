@@ -7,11 +7,17 @@
   X-DNS-Prefetch-Control: off
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
-/assets/*
+# Cache lunga solo per i file che cambiano nome quando cambiano contenuto.
+# CSS, JS e pagine tengono lo stesso nome: restano sulla revalidazione di default
+# (public, max-age=0, must-revalidate), così le modifiche arrivano subito.
+/assets/img/*
   Cache-Control: public, max-age=31536000, immutable
 
-/*.html
-  Cache-Control: public, max-age=0, must-revalidate
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/video/*
+  Cache-Control: public, max-age=31536000, immutable
 
 /sitemap.xml
   Cache-Control: public, max-age=3600

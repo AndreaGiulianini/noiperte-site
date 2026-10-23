@@ -193,9 +193,9 @@
     </nav>
 
     <div class="header-actions">
-      <a class="header-phone" href="tel:+393453244032">
+      <a class="header-phone" href="tel:+393453244032" aria-label="Chiama il 345 3244032">
         <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
-        345 3244032
+        <span class="header-phone__num">345 3244032</span>
       </a>
       <a class="btn btn--primary btn--sm btn--header-cta" href="/sostienici/">Sostienici</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-nav-toggle>
@@ -207,7 +207,7 @@
   </div>
 </header>
 
-<div class="mobile-nav" id="mobile-nav" tabindex="-1" role="dialog" aria-modal="true" aria-label="Menu di navigazione" data-drawer hidden>
+<div class="mobile-nav" id="mobile-nav" tabindex="-1" data-drawer hidden>
   <nav aria-label="Navigazione mobile">
     <ul>
       <li><a class="mobile-link" href="/chi-siamo/">Chi siamo <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></a></li>
@@ -274,7 +274,10 @@
       </div>
     </div>
     <figure class="split__media reveal" data-delay="1">
-      <img src="/assets/img/gruppo-volontari-901.jpg" alt="I volontari in maglietta rossa riuniti accanto ai pulmini dell'associazione" width="901" height="901" loading="lazy" decoding="async">
+      <picture>
+        <source type="image/webp" srcset="/assets/img/gruppo-volontari-901.webp">
+        <img src="/assets/img/gruppo-volontari-901.jpg" alt="I volontari dell'associazione, con le giacche invernali, riuniti accanto ai pulmini" width="901" height="901" loading="lazy" decoding="async">
+      </picture>
       <figcaption>I volontari dell'associazione riuniti accanto ai mezzi.</figcaption>
     </figure>
   </div>
@@ -321,8 +324,8 @@
       <p class="eyebrow">Il nostro spot</p>
       <h2>Trenta secondi per capire.</h2>
       <p class="lead">Guarda cosa significa salire su uno dei nostri pulmini. Poi immagina di essere tu, al posto del volontario.</p>
-      <a class="video-thumb mt-3" href="/assets/video/spot-noi-per-te-720.mp4" data-video="/assets/video/spot-noi-per-te-720.mp4" data-video-mobile="/assets/video/spot-noi-per-te-540.mp4" data-poster="/assets/video/poster-spot.jpg" aria-label="Guarda lo spot dell'associazione Noi per Te">
-        <img src="/assets/video/poster-spot.jpg" alt="Fotogramma dello spot: una famiglia riunita intorno a un tavolo" width="1280" height="720" loading="lazy" decoding="async">
+      <a class="video-thumb mt-3" href="/assets/video/spot-noi-per-te-720.mp4" data-video="/assets/video/spot-noi-per-te-720.mp4" data-video-mobile="/assets/video/spot-noi-per-te-540.mp4" data-poster="/assets/video/poster-spot-metti-in-moto.jpg">
+        <img src="/assets/video/poster-spot-metti-in-moto.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
         <span class="play-btn"><span class="play-circle"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span> Guarda lo spot</span>
         <span class="duration">0:28</span>
       </a>

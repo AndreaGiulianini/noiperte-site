@@ -193,9 +193,9 @@
     </nav>
 
     <div class="header-actions">
-      <a class="header-phone" href="tel:+393453244032">
+      <a class="header-phone" href="tel:+393453244032" aria-label="Chiama il 345 3244032">
         <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
-        345 3244032
+        <span class="header-phone__num">345 3244032</span>
       </a>
       <a class="btn btn--primary btn--sm btn--header-cta" href="/sostienici/">Sostienici</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-nav-toggle>
@@ -207,7 +207,7 @@
   </div>
 </header>
 
-<div class="mobile-nav" id="mobile-nav" tabindex="-1" role="dialog" aria-modal="true" aria-label="Menu di navigazione" data-drawer hidden>
+<div class="mobile-nav" id="mobile-nav" tabindex="-1" data-drawer hidden>
   <nav aria-label="Navigazione mobile">
     <ul>
       <li><a class="mobile-link" href="/chi-siamo/">Chi siamo <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></a></li>
@@ -488,7 +488,10 @@
       <a class="link-arrow" href="/notizie/">Leggi le notizie <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
     <figure class="split__media reveal" data-delay="1">
-      <img src="/assets/img/rassegna-dieci-anni-606.jpg" alt="Ritaglio del Resto del Carlino: Associazione Noi per Te, dieci anni con disabili e anziani" width="606" height="606" loading="lazy" decoding="async">
+      <picture>
+        <source type="image/webp" srcset="/assets/img/rassegna-dieci-anni-606.webp">
+        <img src="/assets/img/rassegna-dieci-anni-606.jpg" alt="Ritaglio del Resto del Carlino: Associazione Noi per Te, dieci anni con disabili e anziani" width="606" height="606" loading="lazy" decoding="async">
+      </picture>
       <figcaption>«Dieci anni con disabili e anziani», Il Resto del Carlino, 14 giugno 2021.</figcaption>
     </figure>
   </div>

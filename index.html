@@ -162,9 +162,9 @@
     </nav>
 
     <div class="header-actions">
-      <a class="header-phone" href="tel:+393453244032">
+      <a class="header-phone" href="tel:+393453244032" aria-label="Chiama il 345 3244032">
         <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
-        345 3244032
+        <span class="header-phone__num">345 3244032</span>
       </a>
       <a class="btn btn--primary btn--sm btn--header-cta" href="/sostienici/">Sostienici</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-nav-toggle>
@@ -176,7 +176,7 @@
   </div>
 </header>
 
-<div class="mobile-nav" id="mobile-nav" tabindex="-1" role="dialog" aria-modal="true" aria-label="Menu di navigazione" data-drawer hidden>
+<div class="mobile-nav" id="mobile-nav" tabindex="-1" data-drawer hidden>
   <nav aria-label="Navigazione mobile">
     <ul>
       <li><a class="mobile-link" href="/chi-siamo/">Chi siamo <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></a></li>
@@ -237,13 +237,13 @@
             <source type="image/webp" srcset="/assets/img/pulmini-sede-orogel-768.webp 768w, /assets/img/pulmini-sede-orogel-1280.webp 1280w, /assets/img/pulmini-sede-orogel-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 48vw">
             <img src="/assets/img/pulmini-sede-orogel-1280.jpg" srcset="/assets/img/pulmini-sede-orogel-768.jpg 768w, /assets/img/pulmini-sede-orogel-1280.jpg 1280w, /assets/img/pulmini-sede-orogel-1920.jpg 1920w" sizes="(max-width: 900px) 100vw, 48vw" alt="I pulmini dell'associazione Noi per Te parcheggiati davanti alla sede di Pievesestina di Cesena" width="1280" height="800" fetchpriority="high" decoding="async">
           </picture>
-          <a class="play-btn" href="/assets/video/spot-noi-per-te-720.mp4" data-video="/assets/video/spot-noi-per-te-720.mp4" data-video-mobile="/assets/video/spot-noi-per-te-540.mp4" data-poster="/assets/video/poster-spot.jpg">
+          <a class="play-btn" href="/assets/video/spot-noi-per-te-720.mp4" data-video="/assets/video/spot-noi-per-te-720.mp4" data-video-mobile="/assets/video/spot-noi-per-te-540.mp4" data-poster="/assets/video/poster-spot-metti-in-moto.jpg">
             <span class="play-circle"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
             Guarda lo spot
           </a>
         </figure>
         <div class="hero-badge" aria-hidden="true">
-          <span class="big">16</span>
+          <span class="big" data-since="2010-07">16</span>
           <span class="small">anni<br>al vostro fianco</span>
         </div>
       </div>
@@ -254,7 +254,7 @@
   <div class="shell stats-bar">
     <ul class="stats">
       <li>
-        <span class="num">16 <span>anni</span></span>
+        <span class="num"><span data-since="2010-07">16</span> <span class="unit">anni</span></span>
         <span class="lbl">di servizio continuo, dal 2010</span>
       </li>
       <li>
@@ -283,7 +283,10 @@
         <a class="link-arrow" href="/chi-siamo/">La nostra storia <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <figure class="split__media reveal" data-delay="1">
-        <img src="/assets/img/gruppo-volontari-720.jpg" alt="I volontari dell'associazione Noi per Te riuniti accanto ai pulmini attrezzati" width="901" height="901" loading="lazy" decoding="async">
+        <picture>
+          <source type="image/webp" srcset="/assets/img/gruppo-volontari-720.webp 720w, /assets/img/gruppo-volontari-901.webp 901w" sizes="(max-width: 900px) 100vw, 540px">
+          <img src="/assets/img/gruppo-volontari-720.jpg" srcset="/assets/img/gruppo-volontari-720.jpg 720w, /assets/img/gruppo-volontari-901.jpg 901w" sizes="(max-width: 900px) 100vw, 540px" alt="I volontari dell'associazione Noi per Te riuniti accanto ai pulmini attrezzati" width="901" height="901" loading="lazy" decoding="async">
+        </picture>
         <figcaption>I volontari dell'associazione, con i mezzi pronti per le corse del mattino.</figcaption>
       </figure>
     </div>
@@ -391,8 +394,8 @@
         <p class="eyebrow">Il nostro spot</p>
         <h2>Metti in moto il cuore.</h2>
         <p class="lead">Trenta secondi per raccontare cosa significa esserci. Perché dietro ogni corsa c'è qualcuno che aspetta, e dietro ogni volontario c'è una scelta.</p>
-        <a class="video-thumb mt-3" href="/assets/video/spot-noi-per-te-720.mp4" data-video="/assets/video/spot-noi-per-te-720.mp4" data-video-mobile="/assets/video/spot-noi-per-te-540.mp4" data-poster="/assets/video/poster-spot.jpg" aria-label="Guarda lo spot dell'associazione Noi per Te">
-          <img src="/assets/video/poster-spot.jpg" alt="Fotogramma dello spot: una mano gira la chiave nel quadro dell'auto, con la scritta Metti in moto il cuore" width="1280" height="720" loading="lazy" decoding="async">
+        <a class="video-thumb mt-3" href="/assets/video/spot-noi-per-te-720.mp4" data-video="/assets/video/spot-noi-per-te-720.mp4" data-video-mobile="/assets/video/spot-noi-per-te-540.mp4" data-poster="/assets/video/poster-spot-metti-in-moto.jpg">
+          <img src="/assets/video/poster-spot-metti-in-moto.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
           <span class="play-btn"><span class="play-circle"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span> Guarda lo spot</span>
           <span class="duration">0:28</span>
         </a>
@@ -432,12 +435,12 @@
       </div>
 
       <ul class="gallery-grid">
-        <li data-gallery-item data-cat="volontari"><a class="gallery-item" href="/assets/img/gruppo-volontari-901.jpg" data-gallery-open data-full="/assets/img/gruppo-volontari-901.jpg" data-alt="Volontarie e volontari riuniti accanto ai pulmini attrezzati" data-caption="Volontarie e volontari dell'associazione accanto ai mezzi, durante una giornata insieme."><img src="/assets/img/gruppo-volontari-720.jpg" alt="Volontarie e volontari riuniti accanto ai pulmini attrezzati" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Volontari</span></a></li>
-        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/pulmini-in-cortile-1440.jpg" data-gallery-open data-full="/assets/img/pulmini-in-cortile-1440.jpg" data-alt="I pulmini attrezzati parcheggiati nel cortile della sede" data-caption="I mezzi dell'associazione nel cortile della sede, pronti per le attività della giornata."><img src="/assets/img/pulmini-in-cortile-720.jpg" alt="I pulmini attrezzati parcheggiati nel cortile della sede" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
-        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/fiat-doblo-anteriore-1500.jpg" data-gallery-open data-full="/assets/img/fiat-doblo-anteriore-1500.jpg" data-alt="Il fronte di un Fiat Doblò bianco con il logo Noi per Te sul cofano" data-caption="Il cofano di un mezzo, con il logo dell'associazione."><img src="/assets/img/fiat-doblo-anteriore-720.jpg" alt="Il fronte di un Fiat Doblò bianco con il logo Noi per Te sul cofano" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
-        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/fiat-doblo-posteriore-1500.jpg" data-gallery-open data-full="/assets/img/fiat-doblo-posteriore-1500.jpg" data-alt="Retro di un pulmino con il logo Noi per Te e il simbolo della carrozzina" data-caption="Il retro di uno dei mezzi: il simbolo della carrozzina e il numero per le prenotazioni."><img src="/assets/img/fiat-doblo-posteriore-720.jpg" alt="Retro di un pulmino con il logo Noi per Te e il simbolo della carrozzina" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
-        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/pulmini-in-fila-823.jpg" data-gallery-open data-full="/assets/img/pulmini-in-fila-823.jpg" data-alt="Tre pulmini attrezzati allineati nel piazzale" data-caption="I pulmini attrezzati per il sollevamento delle carrozzine, allineati nel piazzale."><img src="/assets/img/pulmini-in-fila-720.jpg" alt="Tre pulmini attrezzati allineati nel piazzale" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
-        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/fiat-doblo-di-profilo-720.jpg" data-gallery-open data-full="/assets/img/fiat-doblo-di-profilo-720.jpg" data-alt="Fiat Doblò bianco con il logo dell'associazione sul fianco" data-caption="Un Fiat Doblò allestito: sul fianco il logo dell'associazione e il numero da chiamare."><img src="/assets/img/fiat-doblo-di-profilo-720.jpg" alt="Fiat Doblò bianco con il logo dell'associazione sul fianco" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
+        <li data-gallery-item data-cat="volontari"><a class="gallery-item" href="/assets/img/gruppo-volontari-901.jpg" data-gallery-open data-full="/assets/img/gruppo-volontari-901.jpg" data-alt="Volontarie e volontari riuniti accanto ai pulmini attrezzati" data-caption="Volontarie e volontari dell'associazione accanto ai mezzi, durante una giornata insieme."><picture><source type="image/webp" srcset="/assets/img/gruppo-volontari-720.webp"><img src="/assets/img/gruppo-volontari-720.jpg" alt="Volontarie e volontari riuniti accanto ai pulmini attrezzati" width="720" height="720" loading="lazy" decoding="async"></picture><span class="gallery-tag">Volontari</span></a></li>
+        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/pulmini-in-cortile-1440.jpg" data-gallery-open data-full="/assets/img/pulmini-in-cortile-1440.jpg" data-alt="I pulmini attrezzati parcheggiati nel cortile della sede" data-caption="I mezzi dell'associazione nel cortile della sede, pronti per le attività della giornata."><picture><source type="image/webp" srcset="/assets/img/pulmini-in-cortile-720.webp"><img src="/assets/img/pulmini-in-cortile-720.jpg" alt="I pulmini attrezzati parcheggiati nel cortile della sede" width="720" height="720" loading="lazy" decoding="async"></picture><span class="gallery-tag">Mezzi</span></a></li>
+        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/fiat-doblo-anteriore-1500.jpg" data-gallery-open data-full="/assets/img/fiat-doblo-anteriore-1500.jpg" data-alt="Il fronte di un Fiat Doblò bianco con il logo Noi per Te sul cofano" data-caption="Il cofano di un mezzo, con il logo dell'associazione."><picture><source type="image/webp" srcset="/assets/img/fiat-doblo-anteriore-720.webp"><img src="/assets/img/fiat-doblo-anteriore-720.jpg" alt="Il fronte di un Fiat Doblò bianco con il logo Noi per Te sul cofano" width="720" height="720" loading="lazy" decoding="async"></picture><span class="gallery-tag">Mezzi</span></a></li>
+        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/fiat-doblo-posteriore-1500.jpg" data-gallery-open data-full="/assets/img/fiat-doblo-posteriore-1500.jpg" data-alt="Retro di un pulmino con il logo Noi per Te e il simbolo della carrozzina" data-caption="Il retro di uno dei mezzi: il simbolo della carrozzina e il numero per le prenotazioni."><picture><source type="image/webp" srcset="/assets/img/fiat-doblo-posteriore-720.webp"><img src="/assets/img/fiat-doblo-posteriore-720.jpg" alt="Retro di un pulmino con il logo Noi per Te e il simbolo della carrozzina" width="720" height="720" loading="lazy" decoding="async"></picture><span class="gallery-tag">Mezzi</span></a></li>
+        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/pulmini-in-fila-823.jpg" data-gallery-open data-full="/assets/img/pulmini-in-fila-823.jpg" data-alt="Tre pulmini attrezzati allineati nel piazzale" data-caption="I pulmini attrezzati per il sollevamento delle carrozzine, allineati nel piazzale."><picture><source type="image/webp" srcset="/assets/img/pulmini-in-fila-720.webp"><img src="/assets/img/pulmini-in-fila-720.jpg" alt="Tre pulmini attrezzati allineati nel piazzale" width="720" height="720" loading="lazy" decoding="async"></picture><span class="gallery-tag">Mezzi</span></a></li>
+        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/fiat-doblo-di-profilo-720.jpg" data-gallery-open data-full="/assets/img/fiat-doblo-di-profilo-720.jpg" data-alt="Fiat Doblò bianco con il logo dell'associazione sul fianco" data-caption="Un Fiat Doblò allestito: sul fianco il logo dell'associazione e il numero da chiamare."><picture><source type="image/webp" srcset="/assets/img/fiat-doblo-di-profilo-720.webp"><img src="/assets/img/fiat-doblo-di-profilo-720.jpg" alt="Fiat Doblò bianco con il logo dell'associazione sul fianco" width="720" height="720" loading="lazy" decoding="async"></picture><span class="gallery-tag">Mezzi</span></a></li>
       </ul>
     </div>
   </section>
@@ -456,7 +459,10 @@
       <div class="news-grid">
         <a class="news-card reveal" href="/notizie/15-anni-di-servizio/">
           <div class="news-card__media">
-            <img src="/assets/img/gruppo-volontari-720.jpg" alt="I volontari dell'associazione riuniti accanto ai mezzi" width="720" height="720" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/webp" srcset="/assets/img/gruppo-volontari-720.webp">
+              <img src="/assets/img/gruppo-volontari-720.jpg" alt="I volontari dell'associazione riuniti accanto ai mezzi" width="720" height="720" loading="lazy" decoding="async">
+            </picture>
           </div>
           <div class="news-card__body">
             <div class="news-card__meta"><span class="tag">Traguardi</span><time datetime="2025-05-23">23 maggio 2025</time></div>
@@ -468,7 +474,10 @@
 
         <a class="news-card reveal" data-delay="1" href="/notizie/nuovi-mezzi-per-il-trasporto/">
           <div class="news-card__media">
-            <img src="/assets/img/fiat-doblo-anteriore-720.jpg" alt="Il fronte di un Fiat Doblò bianco con il logo Noi per Te sul cofano" width="720" height="720" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/webp" srcset="/assets/img/fiat-doblo-anteriore-720.webp">
+              <img src="/assets/img/fiat-doblo-anteriore-720.jpg" alt="Il fronte di un Fiat Doblò bianco con il logo Noi per Te sul cofano" width="720" height="720" loading="lazy" decoding="async">
+            </picture>
           </div>
           <div class="news-card__body">
             <div class="news-card__meta"><span class="tag">Mezzi</span><time datetime="2023-12-09">9 dicembre 2023</time></div>
@@ -480,7 +489,10 @@
 
         <a class="news-card reveal" data-delay="2" href="/notizie/premio-marco-biagi-2016/">
           <div class="news-card__media">
-            <img src="/assets/img/premio-marco-biagi-2016-720.jpg" alt="Attestato del Premio Marco Biagi 2016 per la Solidarietà Sociale" width="720" height="720" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/webp" srcset="/assets/img/premio-marco-biagi-2016-720.webp">
+              <img src="/assets/img/premio-marco-biagi-2016-720.jpg" alt="Attestato del Premio Marco Biagi 2016 per la Solidarietà Sociale" width="720" height="720" loading="lazy" decoding="async">
+            </picture>
           </div>
           <div class="news-card__body">
             <div class="news-card__meta"><span class="tag">Riconoscimenti</span><time datetime="2016-03-12">12 marzo 2016</time></div>

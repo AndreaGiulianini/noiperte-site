@@ -88,7 +88,6 @@ body {
   overflow-x: hidden;
 }
 img,
-picture,
 video,
 svg {
   display: block;
@@ -96,6 +95,11 @@ svg {
 }
 img {
   height: auto;
+}
+/* <picture> serve solo a scegliere il formato: il layout lo fa l'<img>,
+   così height: 100% e object-fit funzionano anche dentro i riquadri. */
+picture {
+  display: contents;
 }
 button,
 input,
@@ -196,7 +200,9 @@ blockquote {
 .site-footer :focus-visible,
 .cta-band :focus-visible,
 .code-card :focus-visible,
-.section--ink :focus-visible {
+.section--ink :focus-visible,
+.lightbox :focus-visible,
+.video-modal :focus-visible {
   outline-color: #fff;
 }
 .sr-only {
@@ -303,7 +309,7 @@ blockquote {
 .section-head h2 {
   margin-bottom: 0.45em;
 }
-.section-head p {
+.section-head p:not(.eyebrow) {
   color: var(--ink-2);
   font-size: 1.08rem;
 }
@@ -717,7 +723,7 @@ body.nav-open {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 52% 58%;
+  object-position: 85% 58%;
 }
 .hero-photo::after {
   content: "";
@@ -832,7 +838,7 @@ body.nav-open {
   color: var(--ink);
   letter-spacing: -0.02em;
 }
-.stats .num span {
+.stats .num .unit {
   color: var(--red-700);
 }
 .stats .lbl {
@@ -971,7 +977,7 @@ body.nav-open {
 .split__content h2 {
   margin-bottom: 0.5em;
 }
-.split__content p {
+.split__content p:not(.eyebrow) {
   color: var(--ink-2);
 }
 .split__content .signature {
@@ -1606,7 +1612,7 @@ body.nav-open {
   margin-bottom: 0.35em;
   font-size: clamp(1.9rem, 4vw, 3rem);
 }
-.cta-band p {
+.cta-band p:not(.eyebrow) {
   color: rgba(255, 255, 255, 0.8);
   margin: 0;
   max-width: 52ch;
@@ -1655,7 +1661,7 @@ body.nav-open {
   color: #fff;
   margin-bottom: 0.3em;
 }
-.code-card p {
+.code-card p:not(.eyebrow) {
   color: rgba(255, 255, 255, 0.85);
   margin: 0;
   max-width: 56ch;
@@ -1767,7 +1773,7 @@ body.nav-open {
 .field-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  column-gap: 16px;
 }
 .checkbox {
   display: flex;
@@ -2194,8 +2200,8 @@ a.contact-item:hover {
   .nav-toggle {
     display: inline-flex;
   }
-  .header-phone {
-    display: none;
+  .header-actions {
+    margin-left: auto;
   }
   .gallery-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2214,10 +2220,9 @@ a.contact-item:hover {
   }
   .hero-media {
     order: -1;
-    max-width: 620px;
   }
   .hero-photo {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
   }
   .hero-badge {
     left: auto;
@@ -2276,6 +2281,24 @@ a.contact-item:hover {
 @media (max-width: 680px) {
   .header-inner {
     min-height: 64px;
+    gap: 12px;
+  }
+  /* Su telefono il numero resta raggiungibile come pulsante con l'icona. */
+  .header-phone {
+    width: 46px;
+    height: 46px;
+    justify-content: center;
+    padding: 0;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    background: #fff;
+  }
+  .header-phone .icon {
+    width: 22px;
+    height: 22px;
+  }
+  .header-phone__num {
+    display: none;
   }
   .brand img {
     height: 32px;
@@ -2379,7 +2402,7 @@ a.contact-item:hover {
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 360px) {
   .stats {
     grid-template-columns: 1fr;
   }
@@ -2387,6 +2410,7 @@ a.contact-item:hover {
     border-left: 0;
     border-top: 1px solid var(--line);
   }
+  .stats li:nth-child(1),
   .stats li:nth-child(2) {
     border-bottom: 0;
   }

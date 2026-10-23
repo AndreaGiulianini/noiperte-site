@@ -21,13 +21,16 @@
   var toggle = doc.querySelector("[data-nav-toggle]");
   var drawer = doc.querySelector("[data-drawer]");
   if (toggle && drawer) {
+    var toggleLabel = toggle.querySelector(".sr-only");
     var closeDrawer = function () {
       toggle.setAttribute("aria-expanded", "false");
+      if (toggleLabel) toggleLabel.textContent = "Apri il menu";
       drawer.hidden = true;
       doc.body.classList.remove("nav-open");
     };
     var openDrawer = function () {
       toggle.setAttribute("aria-expanded", "true");
+      if (toggleLabel) toggleLabel.textContent = "Chiudi il menu";
       drawer.hidden = false;
       doc.body.classList.add("nav-open");
       drawer.focus();
@@ -39,11 +42,16 @@
     drawer.addEventListener("click", function (e) {
       if (e.target.closest("a")) closeDrawer();
     });
-    // Mantiene il focus dentro il menu finché è aperto (Tab / Shift+Tab).
-    drawer.addEventListener("keydown", function (e) {
+    doc.addEventListener("keydown", function (e) {
+      if (drawer.hidden) return;
+      if (e.key === "Escape") {
+        closeDrawer();
+        toggle.focus();
+        return;
+      }
+      // Finché il menu è aperto il Tab gira tra il pulsante di chiusura e i link del menu.
       if (e.key !== "Tab") return;
-      var focusables = drawer.querySelectorAll("a[href], button:not([disabled])");
-      if (!focusables.length) return;
+      var focusables = [toggle].concat([].slice.call(drawer.querySelectorAll("a[href], button:not([disabled])")));
       var first = focusables[0];
       var last = focusables[focusables.length - 1];
       if (e.shiftKey && doc.activeElement === first) {
@@ -52,12 +60,6 @@
       } else if (!e.shiftKey && doc.activeElement === last) {
         e.preventDefault();
         first.focus();
-      }
-    });
-    doc.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && !drawer.hidden) {
-        closeDrawer();
-        toggle.focus();
       }
     });
     window.addEventListener("resize", function () {
@@ -331,7 +333,16 @@
   }
 
   /* ------------------------------------------------ year ----------------- */
+  var now = new Date();
   var yearEls = doc.querySelectorAll("[data-year]");
-  var year = String(new Date().getFullYear());
+  var year = String(now.getFullYear());
   [].slice.call(yearEls).forEach(function (el) { el.textContent = year; });
+
+  // Anni di servizio da una data "AAAA-MM": il numero nell'HTML resta come fallback.
+  [].slice.call(doc.querySelectorAll("[data-since]")).forEach(function (el) {
+    var parts = el.getAttribute("data-since").split("-");
+    var years = now.getFullYear() - Number(parts[0]);
+    if (now.getMonth() + 1 < Number(parts[1] || 1)) years -= 1;
+    if (years > 0) el.textContent = String(years);
+  });
 })();

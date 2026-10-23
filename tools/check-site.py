@@ -46,15 +46,14 @@ def local_target(url):
 
 
 def check_links(page, html):
-    urls = re.findall(r'(?:href|src|poster)="([^"]+)"', html)
+    # data-full, data-video* e data-poster: file aperti da lightbox e video modal.
+    urls = re.findall(r'(?:href|src|poster|data-full|data-video|data-video-mobile)="([^"]+)"', html)
     for srcset in re.findall(r'srcset="([^"]+)"', html):
         urls += [part.strip().split(" ")[0] for part in srcset.split(",")]
     for url in urls:
         target = local_target(url)
         if target and not os.path.exists(target):
             errors.append(f"{page}: link/asset mancante -> {url}")
-    for name in ("index.html",):
-        pass
 
 
 def check_seo(page, html):
@@ -104,7 +103,8 @@ def check_sitemap():
 def check_json_files():
     for name in ("site.webmanifest", "vercel.json"):
         try:
-            json.load(open(name, encoding="utf-8"))
+            with open(name, encoding="utf-8") as fh:
+                json.load(fh)
         except (OSError, json.JSONDecodeError) as exc:
             errors.append(f"{name} non valido ({exc})")
 
