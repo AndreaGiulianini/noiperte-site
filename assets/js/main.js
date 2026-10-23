@@ -332,8 +332,8 @@
     });
   }
 
-  /* ------------------------------------------------ social (Meta) -------- */
-  // Gli iframe di Facebook e Instagram si creano solo dopo il consenso, che resta
+  /* ------------------------------------------------ Facebook in diretta -- */
+  // L'iframe della pagina Facebook si crea solo dopo il consenso, che resta
   // salvato su questo dispositivo finché non viene revocato.
   var SOCIAL_KEY = "noiperte-social";
   var socialBlocks = [].slice.call(doc.querySelectorAll("[data-social]"));
@@ -387,14 +387,9 @@
     block.querySelector("[data-social-consent]").hidden = true;
     block.querySelector("[data-social-feed]").hidden = false;
     [].slice.call(block.querySelectorAll("[data-fb]")).forEach(mountFacebook);
-    [].slice.call(block.querySelectorAll("[data-ig]")).forEach(function (item) {
-      var src = "https://www.instagram.com/" + item.getAttribute("data-ig") + "/embed/";
-      item.textContent = "";
-      item.appendChild(makeFrame(src, item.getAttribute("data-title")));
-    });
   };
   var unmountSocial = function (block) {
-    [].slice.call(block.querySelectorAll("[data-fb], [data-ig]")).forEach(function (el) {
+    [].slice.call(block.querySelectorAll("[data-fb]")).forEach(function (el) {
       el.textContent = "";
     });
     block.querySelector("[data-social-feed]").hidden = true;
@@ -404,8 +399,8 @@
     var on = hasSocialConsent();
     socialStatus.forEach(function (el) {
       el.textContent = on
-        ? "Su questo dispositivo hai scelto di mostrare i contenuti di Facebook e Instagram."
-        : "Su questo dispositivo i contenuti di Facebook e Instagram non vengono caricati.";
+        ? "Su questo dispositivo hai scelto di mostrare la pagina Facebook."
+        : "Su questo dispositivo la pagina Facebook non viene caricata.";
     });
     [].slice.call(doc.querySelectorAll("[data-social-revoke]")).forEach(function (btn) {
       btn.hidden = !on;
@@ -424,23 +419,6 @@
       socialBlocks.forEach(unmountSocial);
       renderSocialStatus();
     }
-  });
-
-  // L'embed di Instagram comunica la propria altezza: la applichiamo all'iframe.
-  window.addEventListener("message", function (e) {
-    if (e.origin !== "https://www.instagram.com") return;
-    var msg = e.data;
-    if (typeof msg === "string") {
-      try {
-        msg = JSON.parse(msg);
-      } catch (err) {
-        return;
-      }
-    }
-    if (!msg || msg.type !== "MEASURE" || !msg.details || !msg.details.height) return;
-    [].slice.call(doc.querySelectorAll("[data-ig] iframe")).forEach(function (frame) {
-      if (frame.contentWindow === e.source) frame.style.height = msg.details.height + "px";
-    });
   });
 
   // Il plugin di Facebook ha una larghezza fissa: lo ricrea se lo spazio cambia molto.

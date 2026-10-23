@@ -22,3 +22,6 @@ jobs:
 
       - name: Controlla link, SEO e JSON-LD
         run: python3 tools/check-site.py
+
+      - name: Controlla che le card social siano aggiornate
+        run: python3 tools/build-social.py --check
