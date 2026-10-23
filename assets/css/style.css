@@ -1909,6 +1909,123 @@ a.contact-item:hover {
   color: var(--muted);
 }
 
+/* --------------------------------------------------------- Social -------- */
+/* Post di Facebook e Instagram: gli iframe di Meta arrivano solo dopo il consenso. */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.social-consent {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  max-width: 680px;
+  margin-inline: auto;
+  padding: clamp(26px, 4vw, 44px);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+.section--white .social-consent {
+  background: var(--cream);
+}
+.social-consent[hidden] {
+  display: none;
+}
+.social-consent__icons {
+  display: flex;
+  gap: 10px;
+}
+.social-consent__icons span {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--red-50);
+  color: var(--red-700);
+}
+.social-consent h3 {
+  margin: 0;
+}
+.social-consent p {
+  margin: 0;
+  max-width: 54ch;
+  color: var(--ink-2);
+}
+.social-consent .social-consent__note {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.no-js .social-consent [data-social-load] {
+  display: none;
+}
+.social-feed {
+  display: grid;
+  grid-template-columns: 440px minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+.social-feed[hidden] {
+  display: none;
+}
+.social-feed:focus {
+  outline: none;
+}
+.social-fb {
+  overflow: hidden;
+  min-height: 200px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+.social-fb iframe {
+  display: block;
+  max-width: 100%;
+  border: 0;
+}
+.social-ig {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.social-ig li {
+  margin: 0;
+}
+.social-ig iframe {
+  /* L'altezza comunicata da Instagram è quella del contenuto, bordo escluso. */
+  box-sizing: content-box;
+  display: block;
+  width: calc(100% - 2px);
+  height: 560px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+.social-revoke {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.link-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--red-700);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.link-btn:hover {
+  color: var(--red-600);
+}
+
 /* --------------------------------------------------------- FAQ ----------- */
 .faq {
   max-width: 820px;
@@ -2212,6 +2329,14 @@ a.contact-item:hover {
   .footer-col--contact {
     grid-column: 1 / -1;
   }
+  .social-feed {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .social-fb {
+    width: 100%;
+    max-width: 502px;
+    margin-inline: auto;
+  }
 }
 
 @media (max-width: 900px) {
@@ -2374,6 +2499,23 @@ a.contact-item:hover {
   }
   .footer-brand img {
     height: 54px;
+  }
+  /* Su telefono i post Instagram scorrono in orizzontale, come nell'app. */
+  .social-ig {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(86%, 340px);
+    gap: 12px;
+    margin-inline: calc(var(--pad) * -1);
+    padding: 0 var(--pad) 10px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--pad);
+  }
+  .social-ig li {
+    scroll-snap-align: start;
   }
   .lightbox-figure figcaption {
     flex-direction: column;

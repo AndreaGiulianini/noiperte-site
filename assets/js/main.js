@@ -332,6 +332,132 @@
     });
   }
 
+  /* ------------------------------------------------ social (Meta) -------- */
+  // Gli iframe di Facebook e Instagram si creano solo dopo il consenso, che resta
+  // salvato su questo dispositivo finché non viene revocato.
+  var SOCIAL_KEY = "noiperte-social";
+  var socialBlocks = [].slice.call(doc.querySelectorAll("[data-social]"));
+  var socialStatus = [].slice.call(doc.querySelectorAll("[data-social-status]"));
+
+  var hasSocialConsent = function () {
+    try {
+      return window.localStorage.getItem(SOCIAL_KEY) === "si";
+    } catch (err) {
+      return false;
+    }
+  };
+  var saveSocialConsent = function (value) {
+    try {
+      if (value) window.localStorage.setItem(SOCIAL_KEY, "si");
+      else window.localStorage.removeItem(SOCIAL_KEY);
+    } catch (err) {
+      // Senza storage il consenso vale solo per questa pagina.
+    }
+  };
+  var makeFrame = function (src, title) {
+    var frame = doc.createElement("iframe");
+    frame.src = src;
+    frame.title = title || "";
+    frame.loading = "lazy";
+    return frame;
+  };
+  var mountFacebook = function (box) {
+    var width = Math.max(180, Math.min(500, Math.floor(box.clientWidth)));
+    var height = Number(box.getAttribute("data-height")) || 640;
+    if (window.innerWidth <= 1080) height = Math.min(height, 640);
+    var src = "https://www.facebook.com/plugins/page.php?" + [
+      "href=" + encodeURIComponent(box.getAttribute("data-fb")),
+      "tabs=timeline",
+      "width=" + width,
+      "height=" + height,
+      "small_header=false",
+      "adapt_container_width=true",
+      "hide_cover=false",
+      "show_facepile=false",
+      "locale=it_IT"
+    ].join("&");
+    var frame = makeFrame(src, box.getAttribute("data-title"));
+    frame.width = width;
+    frame.height = height;
+    box.textContent = "";
+    box.appendChild(frame);
+    box.setAttribute("data-width", String(width));
+  };
+  var mountSocial = function (block) {
+    block.querySelector("[data-social-consent]").hidden = true;
+    block.querySelector("[data-social-feed]").hidden = false;
+    [].slice.call(block.querySelectorAll("[data-fb]")).forEach(mountFacebook);
+    [].slice.call(block.querySelectorAll("[data-ig]")).forEach(function (item) {
+      var src = "https://www.instagram.com/" + item.getAttribute("data-ig") + "/embed/";
+      item.textContent = "";
+      item.appendChild(makeFrame(src, item.getAttribute("data-title")));
+    });
+  };
+  var unmountSocial = function (block) {
+    [].slice.call(block.querySelectorAll("[data-fb], [data-ig]")).forEach(function (el) {
+      el.textContent = "";
+    });
+    block.querySelector("[data-social-feed]").hidden = true;
+    block.querySelector("[data-social-consent]").hidden = false;
+  };
+  var renderSocialStatus = function () {
+    var on = hasSocialConsent();
+    socialStatus.forEach(function (el) {
+      el.textContent = on
+        ? "Su questo dispositivo hai scelto di mostrare i contenuti di Facebook e Instagram."
+        : "Su questo dispositivo i contenuti di Facebook e Instagram non vengono caricati.";
+    });
+    [].slice.call(doc.querySelectorAll("[data-social-revoke]")).forEach(function (btn) {
+      btn.hidden = !on;
+    });
+  };
+
+  doc.addEventListener("click", function (e) {
+    if (e.target.closest("[data-social-load]")) {
+      saveSocialConsent(true);
+      socialBlocks.forEach(mountSocial);
+      var feed = e.target.closest("[data-social]").querySelector("[data-social-feed]");
+      if (feed) feed.focus();
+      renderSocialStatus();
+    } else if (e.target.closest("[data-social-revoke]")) {
+      saveSocialConsent(false);
+      socialBlocks.forEach(unmountSocial);
+      renderSocialStatus();
+    }
+  });
+
+  // L'embed di Instagram comunica la propria altezza: la applichiamo all'iframe.
+  window.addEventListener("message", function (e) {
+    if (e.origin !== "https://www.instagram.com") return;
+    var msg = e.data;
+    if (typeof msg === "string") {
+      try {
+        msg = JSON.parse(msg);
+      } catch (err) {
+        return;
+      }
+    }
+    if (!msg || msg.type !== "MEASURE" || !msg.details || !msg.details.height) return;
+    [].slice.call(doc.querySelectorAll("[data-ig] iframe")).forEach(function (frame) {
+      if (frame.contentWindow === e.source) frame.style.height = msg.details.height + "px";
+    });
+  });
+
+  // Il plugin di Facebook ha una larghezza fissa: lo ricrea se lo spazio cambia molto.
+  var socialResizeTimer;
+  window.addEventListener("resize", function () {
+    window.clearTimeout(socialResizeTimer);
+    socialResizeTimer = window.setTimeout(function () {
+      [].slice.call(doc.querySelectorAll("[data-fb][data-width]")).forEach(function (box) {
+        var width = Math.min(500, Math.floor(box.clientWidth));
+        if (box.firstChild && Math.abs(width - Number(box.getAttribute("data-width"))) > 40) mountFacebook(box);
+      });
+    }, 250);
+  });
+
+  if (hasSocialConsent()) socialBlocks.forEach(mountSocial);
+  renderSocialStatus();
+
   /* ------------------------------------------------ year ----------------- */
   var now = new Date();
   var yearEls = doc.querySelectorAll("[data-year]");

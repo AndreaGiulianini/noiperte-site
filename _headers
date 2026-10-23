@@ -3,7 +3,7 @@
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
-  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; frame-src https://www.openstreetmap.org; connect-src 'self' https://formspree.io https://formsubmit.co; base-uri 'self'; form-action 'self' mailto:; frame-ancestors 'self'
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; frame-src https://www.openstreetmap.org https://www.facebook.com https://www.instagram.com; connect-src 'self' https://formspree.io https://formsubmit.co; base-uri 'self'; form-action 'self' mailto:; frame-ancestors 'self'
   X-DNS-Prefetch-Control: off
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
