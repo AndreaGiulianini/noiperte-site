@@ -1,0 +1,11 @@
+# File esclusi dal deploy su Cloudflare Pages
+sorgenti/
+.scratch/
+tools/
+README.md
+.assetsignore
+.vercelignore
+vercel.json
+
+.gitignore
+.DS_Store
