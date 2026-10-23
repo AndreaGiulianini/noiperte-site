@@ -176,7 +176,7 @@
   </div>
 </header>
 
-<div class="mobile-nav" id="mobile-nav" tabindex="-1" data-drawer hidden>
+<div class="mobile-nav" id="mobile-nav" tabindex="-1" role="dialog" aria-modal="true" aria-label="Menu di navigazione" data-drawer hidden>
   <nav aria-label="Navigazione mobile">
     <ul>
       <li><a class="mobile-link" href="/chi-siamo/">Chi siamo <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></a></li>
@@ -212,7 +212,7 @@
 <main id="main">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="cover">
     <div class="shell hero-grid">
       <div class="hero-copy">
         <p class="eyebrow">Volontariato a Cesena</p>
@@ -273,7 +273,7 @@
   </div>
 
   <!-- CHI SIAMO -->
-  <section class="section" id="chi-siamo">
+  <section class="section" id="chi-siamo"><span class="anchor" id="bio" aria-hidden="true"></span>
     <div class="shell split">
       <div class="split__content reveal">
         <p class="eyebrow">Chi siamo</p>
@@ -290,7 +290,7 @@
   </section>
 
   <!-- SERVIZI -->
-  <section class="section section--white" id="servizi">
+  <section class="section section--white" id="servizi"><span class="anchor" id="services" aria-hidden="true"></span>
     <div class="shell">
       <div class="section-head">
         <p class="eyebrow">Che cosa facciamo</p>
@@ -385,7 +385,7 @@
   </section>
 
   <!-- VIDEO -->
-  <section class="section section--white" id="video">
+  <section class="section section--white" id="video"><span class="anchor" id="videos" aria-hidden="true"></span>
     <div class="shell video-feature">
       <div class="reveal">
         <p class="eyebrow">Il nostro spot</p>
@@ -421,7 +421,7 @@
   </section>
 
   <!-- GALLERIA -->
-  <section class="section">
+  <section class="section" id="photos">
     <div class="shell">
       <div class="section-head section-head--row">
         <div>
@@ -432,18 +432,18 @@
       </div>
 
       <ul class="gallery-grid">
-        <li><a class="gallery-item" href="/assets/img/gruppo-volontari-901.jpg" data-gallery-open data-full="/assets/img/gruppo-volontari-901.jpg" data-alt="Volontarie e volontari riuniti accanto ai pulmini attrezzati" data-caption="Volontarie e volontari dell'associazione accanto ai mezzi, durante una giornata insieme."><img src="/assets/img/gruppo-volontari-720.jpg" alt="Volontarie e volontari riuniti accanto ai pulmini attrezzati" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Volontari</span></a></li>
-        <li><a class="gallery-item" href="/assets/img/pulmini-in-cortile-1440.jpg" data-gallery-open data-full="/assets/img/pulmini-in-cortile-1440.jpg" data-alt="I pulmini attrezzati parcheggiati nel cortile della sede" data-caption="I mezzi dell'associazione nel cortile della sede, pronti per le attività della giornata."><img src="/assets/img/pulmini-in-cortile-720.jpg" alt="I pulmini attrezzati parcheggiati nel cortile della sede" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
-        <li><a class="gallery-item" href="/assets/img/fiat-doblo-anteriore-1500.jpg" data-gallery-open data-full="/assets/img/fiat-doblo-anteriore-1500.jpg" data-alt="Il fronte di un Fiat Doblò bianco con il logo Noi per Te sul cofano" data-caption="Il cofano di un mezzo, con il logo dell'associazione."><img src="/assets/img/fiat-doblo-anteriore-720.jpg" alt="Il fronte di un Fiat Doblò bianco con il logo Noi per Te sul cofano" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
-        <li><a class="gallery-item" href="/assets/img/fiat-doblo-posteriore-1500.jpg" data-gallery-open data-full="/assets/img/fiat-doblo-posteriore-1500.jpg" data-alt="Retro di un pulmino con il logo Noi per Te e il simbolo della carrozzina" data-caption="Il retro di uno dei mezzi: il simbolo della carrozzina e il numero per le prenotazioni."><img src="/assets/img/fiat-doblo-posteriore-720.jpg" alt="Retro di un pulmino con il logo Noi per Te e il simbolo della carrozzina" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
-        <li><a class="gallery-item" href="/assets/img/pulmini-in-fila-823.jpg" data-gallery-open data-full="/assets/img/pulmini-in-fila-823.jpg" data-alt="Tre pulmini attrezzati allineati nel piazzale" data-caption="I pulmini attrezzati per il sollevamento delle carrozzine, allineati nel piazzale."><img src="/assets/img/pulmini-in-fila-720.jpg" alt="Tre pulmini attrezzati allineati nel piazzale" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
-        <li><a class="gallery-item" href="/assets/img/fiat-doblo-di-profilo-720.jpg" data-gallery-open data-full="/assets/img/fiat-doblo-di-profilo-720.jpg" data-alt="Fiat Doblò bianco con il logo dell'associazione sul fianco" data-caption="Un Fiat Doblò allestito: sul fianco il logo dell'associazione e il numero da chiamare."><img src="/assets/img/fiat-doblo-di-profilo-720.jpg" alt="Fiat Doblò bianco con il logo dell'associazione sul fianco" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
+        <li data-gallery-item data-cat="volontari"><a class="gallery-item" href="/assets/img/gruppo-volontari-901.jpg" data-gallery-open data-full="/assets/img/gruppo-volontari-901.jpg" data-alt="Volontarie e volontari riuniti accanto ai pulmini attrezzati" data-caption="Volontarie e volontari dell'associazione accanto ai mezzi, durante una giornata insieme."><img src="/assets/img/gruppo-volontari-720.jpg" alt="Volontarie e volontari riuniti accanto ai pulmini attrezzati" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Volontari</span></a></li>
+        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/pulmini-in-cortile-1440.jpg" data-gallery-open data-full="/assets/img/pulmini-in-cortile-1440.jpg" data-alt="I pulmini attrezzati parcheggiati nel cortile della sede" data-caption="I mezzi dell'associazione nel cortile della sede, pronti per le attività della giornata."><img src="/assets/img/pulmini-in-cortile-720.jpg" alt="I pulmini attrezzati parcheggiati nel cortile della sede" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
+        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/fiat-doblo-anteriore-1500.jpg" data-gallery-open data-full="/assets/img/fiat-doblo-anteriore-1500.jpg" data-alt="Il fronte di un Fiat Doblò bianco con il logo Noi per Te sul cofano" data-caption="Il cofano di un mezzo, con il logo dell'associazione."><img src="/assets/img/fiat-doblo-anteriore-720.jpg" alt="Il fronte di un Fiat Doblò bianco con il logo Noi per Te sul cofano" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
+        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/fiat-doblo-posteriore-1500.jpg" data-gallery-open data-full="/assets/img/fiat-doblo-posteriore-1500.jpg" data-alt="Retro di un pulmino con il logo Noi per Te e il simbolo della carrozzina" data-caption="Il retro di uno dei mezzi: il simbolo della carrozzina e il numero per le prenotazioni."><img src="/assets/img/fiat-doblo-posteriore-720.jpg" alt="Retro di un pulmino con il logo Noi per Te e il simbolo della carrozzina" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
+        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/pulmini-in-fila-823.jpg" data-gallery-open data-full="/assets/img/pulmini-in-fila-823.jpg" data-alt="Tre pulmini attrezzati allineati nel piazzale" data-caption="I pulmini attrezzati per il sollevamento delle carrozzine, allineati nel piazzale."><img src="/assets/img/pulmini-in-fila-720.jpg" alt="Tre pulmini attrezzati allineati nel piazzale" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
+        <li data-gallery-item data-cat="mezzi"><a class="gallery-item" href="/assets/img/fiat-doblo-di-profilo-720.jpg" data-gallery-open data-full="/assets/img/fiat-doblo-di-profilo-720.jpg" data-alt="Fiat Doblò bianco con il logo dell'associazione sul fianco" data-caption="Un Fiat Doblò allestito: sul fianco il logo dell'associazione e il numero da chiamare."><img src="/assets/img/fiat-doblo-di-profilo-720.jpg" alt="Fiat Doblò bianco con il logo dell'associazione sul fianco" width="720" height="720" loading="lazy" decoding="async"><span class="gallery-tag">Mezzi</span></a></li>
       </ul>
     </div>
   </section>
 
   <!-- NOTIZIE -->
-  <section class="section section--white">
+  <section class="section section--white" id="thoughts"><span class="anchor" id="open_text" aria-hidden="true"></span>
     <div class="shell">
       <div class="section-head section-head--row">
         <div>
@@ -531,7 +531,7 @@
   </section>
 
   <!-- CONTATTI -->
-  <section class="section" id="contatti">
+  <section class="section" id="contatti"><span class="anchor" id="contacts" aria-hidden="true"></span><span class="anchor" id="checkins" aria-hidden="true"></span>
     <div class="shell split split--reverse">
       <div class="split__content reveal">
         <p class="eyebrow">Contatti</p>

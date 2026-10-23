@@ -39,6 +39,21 @@
     drawer.addEventListener("click", function (e) {
       if (e.target.closest("a")) closeDrawer();
     });
+    // Mantiene il focus dentro il menu finché è aperto (Tab / Shift+Tab).
+    drawer.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      var focusables = drawer.querySelectorAll("a[href], button:not([disabled])");
+      if (!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && doc.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && doc.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
     doc.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && !drawer.hidden) {
         closeDrawer();
@@ -126,6 +141,7 @@
     var open = function (btn) {
       var li = btn.closest("[data-gallery-item]");
       var list = visibleItems();
+      if (!li || !list.length) return;
       render(list.indexOf(li));
       if (typeof lightbox.showModal === "function") lightbox.showModal();
       else lightbox.setAttribute("open", "");

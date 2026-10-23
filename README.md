@@ -201,6 +201,29 @@ Il JavaScript invierà i dati in JSON e mostrerà il messaggio di conferma. Senz
 Per rigenerare le immagini ottimizzate servono `cwebp` e `ffmpeg`; i file già pronti
 sono in `assets/`. Se ti servono, chiedi: possiamo preparare uno script.
 
+### Controlli automatici
+
+Il repository include un piccolo controllo di qualità, senza dipendenze:
+
+```bash
+python3 tools/check-site.py
+```
+
+Verifica link e asset interni, una sola `<h1>` per pagina, title/description,
+canonical, `og:image`, JSON-LD valido e coerenza del sitemap. In più GitHub Actions
+(`.github/workflows/ci.yml`) esegue a ogni push:
+
+```bash
+npx html-validate $(git ls-files '*.html')
+python3 tools/check-site.py
+```
+
+### Compatibilità con i vecchi link
+
+I vecchi indirizzi a ancora (`/#bio`, `/#services`, `/#videos`, `/#contacts`…) funzionano
+ancora: nella home sono presenti le ancore `cover`, `bio`, `photos`, `open_text`,
+`services`, `checkins`, `thoughts`, `videos`, `contacts`.
+
 ---
 
 ## 8. Cose da verificare con l'associazione

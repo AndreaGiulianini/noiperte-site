@@ -9,3 +9,5 @@ vercel.json
 
 .gitignore
 .DS_Store
+.github/
+.htmlvalidate.json
