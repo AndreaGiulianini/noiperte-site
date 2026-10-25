@@ -1,5 +1,22 @@
 [
   {
+    "data": "2026-10-22",
+    "rete": "instagram",
+    "url": "https://www.instagram.com/p/DeyOSIylSxl/",
+    "immagine": "social-2026-10-22-instagram-a49725",
+    "testo": "Un nuovo post sul nostro profilo Instagram.",
+    "intera": true
+  },
+  {
+    "data": "2026-10-10",
+    "rete": "instagram",
+    "url": "https://www.instagram.com/p/DeU42F8hlcn/",
+    "immagine": "social-2026-10-10-instagram-f5d65a",
+    "testo": "Un nuovo video sul nostro profilo Instagram.",
+    "video": true,
+    "intera": true
+  },
+  {
     "data": "2026-09-04",
     "rete": "instagram",
     "video": true,
@@ -7,6 +24,31 @@
     "immagine": "social-aiutaci-ad-aiutare-2026",
     "intera": true,
     "testo": "Aiutaci ad aiutare: cerchiamo nuovi autisti volontari. Per informazioni chiama il 345 3244032."
+  },
+  {
+    "data": "2026-08-02",
+    "rete": "facebook",
+    "url": "https://www.facebook.com/NoiPerTe/posts/2567744763689174",
+    "immagine": "social-2026-08-02-facebook-a45402",
+    "testo": "Un nuovo post sulla nostra pagina Facebook.",
+    "intera": true
+  },
+  {
+    "data": "2026-08-02",
+    "rete": "facebook",
+    "url": "https://www.facebook.com/NoiPerTe/posts/pfbid0gJXceXDLu5H7PyNcifMD6rKXdN5RNyMTPka4vmrWz1uf5s92RJvcaX3gF1DwV9m9l",
+    "immagine": "social-2026-08-02-facebook-641f30",
+    "testo": "Un nuovo post sulla nostra pagina Facebook.",
+    "intera": true
+  },
+  {
+    "data": "2026-06-17",
+    "rete": "facebook",
+    "url": "https://www.facebook.com/reel/995182366727267",
+    "immagine": "social-2026-06-17-facebook-18204b",
+    "testo": "Un nuovo video sulla nostra pagina Facebook.",
+    "video": true,
+    "intera": true
   },
   {
     "data": "2025-07-15",
