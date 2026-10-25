@@ -177,8 +177,26 @@ def canonical_url(url):
     return urllib.parse.urlunsplit(("https", host, parts.path.rstrip("/") or "/", query, ""))
 
 
+def post_key(url):
+    """Chiave per i duplicati: Instagram usa lo stesso codice per /p/ e /reel/."""
+    if network_of(url) == "instagram":
+        match = re.search(r"/(?:p|reel|tv)/([A-Za-z0-9_-]+)", urllib.parse.urlsplit(url).path)
+        if match:
+            return "instagram:" + match.group(1)
+    return canonical_url(url)
+
+
+def image_key(url):
+    """Lo stesso file immagine può arrivare da server CDN diversi."""
+    return os.path.basename(urllib.parse.urlsplit(url).path)
+
+
 def is_video(url, flagged):
     return flagged or bool(re.search(r"/(reel|reels|tv|videos|watch)\b|fb\.watch", url))
+
+
+# Titoli che RSS.app mette al posto del testo, come "Associazione Noi per Te Posted".
+GENERIC_TITLE = re.compile(r"\b(posted|shared|updated|ha pubblicato|ha condiviso)\b", re.I)
 
 
 def clean_text(raw, network, video):
@@ -187,7 +205,9 @@ def clean_text(raw, network, video):
     text = unicodedata.normalize("NFKC", text)
     text = re.sub(r"https?://\S+", " ", text)
     text = re.sub(r"\s+", " ", text).strip()
-    if len(text) < MIN_TEXT:  # senza testo, o solo un titolo generico come "Video"
+    words = len(text.split())
+    # Senza testo, solo un nome ("Alice Cantoni") o un titolo generico: testo di riserva.
+    if len(text) < MIN_TEXT or words <= 3 or (words <= 8 and GENERIC_TITLE.search(text)):
         return FALLBACK_TEXT[network].format("video" if video else "post")
     if len(text) > MAX_TEXT:
         text = text[:MAX_TEXT].rsplit(" ", 1)[0].rstrip(" ,.;:") + "…"
@@ -241,7 +261,8 @@ def main():
 
     with open(DATA_FILE, encoding="utf-8") as fh:
         posts = json.load(fh)
-    known = {canonical_url(post["url"]) for post in posts}
+    known = {post_key(post["url"]) for post in posts}
+    seen_images = set()
     # Data del post più recente per ciascuna rete: i più vecchi non si reimportano.
     newest = {}
     for post in posts:
@@ -266,10 +287,13 @@ def main():
             continue
         url = canonical_url(item["url"])
         day = item["date"].astimezone(LOCAL_TZ).strftime("%Y-%m-%d")
-        if url in known or day < newest.get(network, ""):
+        if post_key(url) in known or day < newest.get(network, ""):
             continue
         if not item["image"]:
             print(f"Saltato (senza immagine): {url}")
+            continue
+        if image_key(item["image"]) in seen_images:
+            print(f"Saltato (stessa immagine di un altro post): {url}")
             continue
         name = f"social-{day}-{network}-{hashlib.sha1(url.encode()).hexdigest()[:6]}"
         try:
@@ -285,7 +309,8 @@ def main():
         if not 0.85 <= width / height <= 1.18:
             post["intera"] = True
         added.append(post)
-        known.add(url)
+        known.add(post_key(url))
+        seen_images.add(image_key(item["image"]))
         print(f"Nuovo post {day} {network}: {url}")
         if len(added) >= MAX_NEW:
             break
